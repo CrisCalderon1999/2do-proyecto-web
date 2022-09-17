@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LaboratorioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('welcome');})->name('inciarsesion');
 
+Route::get('vistaAdministrador', function () {return view('vistaAdministrador');})->name('vistaad');
+
+//Rutas de laboratorio
+
+Route::get('indexLaboratorio', [LaboratorioController::class, 'index'])->name('laboratorio.index');
+Route::get('createLaboratorio', [LaboratorioController::class, 'create'])->name('laboratorio.create');
+Route::post('createLaboratorio', [LaboratorioController::class, 'store'])->name('laboratorio.store');
+Route::put('createLaboratorio', [LaboratorioController::class, 'show'])->name('laboratorio.show');
 
 
 
