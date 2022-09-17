@@ -13,8 +13,8 @@
     <p class="card-text">Ingrese su opcion</p>
     <a href="#" class="btn btn-primary">Inventario</a>
     <h1>hola </h1>
-    <h1>hola </h1>
-    <h1>hola </h1>
+    <h1>hola como estas</h1>
+    <h1>hola como estas</h1>
     <h1>hola </h1>
   </div>
 </div>
