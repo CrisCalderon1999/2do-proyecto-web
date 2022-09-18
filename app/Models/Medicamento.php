@@ -19,4 +19,14 @@ class Medicamento extends Model
     public function via_administracion(){
         return $this -> belongsTo('App\Models\Via_administracion');
     }
+    public function laboratorios(){
+        return $this->belongsTo(Laboratorio::class,'id_Laboratorio');
+    }
+    public function presentacions(){
+        return $this->belongsTo(Presentacion::class,'id_Presentacion');
+    }
+    public function via_administracions(){
+        return $this->belongsTo(Via_administracion::class,'id_Via_administracion');
+    }
+
 }

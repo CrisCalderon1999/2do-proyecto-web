@@ -3,28 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medicamento;
+use App\Models\Laboratorio;
+use App\Models\Presentacion;
+use App\Models\Via_administracion;
 use Illuminate\Http\Request;
 
 class MedicamentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $datos = Medicamento::all();
+        return view('Medicamentos.indexMedicamentos',compact('datos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
-        //
+        $labs=Laboratorio::all();
+        $pres=Presentacion::all();
+        $vias=Via_administracion::all();
+        return view('Medicamentos.createMedicamentos', compact('labs','pres','vias'));
     }
 
     /**

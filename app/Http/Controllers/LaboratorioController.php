@@ -10,7 +10,7 @@ class LaboratorioController extends Controller
     
     public function index()
     {
-        $datos = Laboratorio::all();
+        $datos = Laboratorio::paginate(3);
         return view('Medicamentos.laboratorio.indexLaboratorio',compact('datos'));
     }
 

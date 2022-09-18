@@ -25,7 +25,7 @@
           <a class="nav-link active" aria-current="page" href="{{route ('vistaad')}}">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Medicamentos</a>
+          <a class="nav-link" href="{{route ('medicamentos.index')}}">Medicamentos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">Miscelaneos</a>
@@ -37,6 +37,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{{route ('laboratorio.index')}}">Agregar laboratorio</a></li>
             <li><a class="dropdown-item" href="{{route ('presentacion.index')}}">Agregar Presentacion</a></li>
+            <li><a class="dropdown-item" href="{{route ('via.index')}}">Agregar Via de administracion</a></li>
 
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="">Agregar empleado</a></li>

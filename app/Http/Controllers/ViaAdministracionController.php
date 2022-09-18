@@ -7,79 +7,62 @@ use Illuminate\Http\Request;
 
 class ViaAdministracionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $datos = Via_administracion::all();
+        return view('Medicamentos.via.indexvia',compact('datos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function create()
     {
-        //
+        return view('Medicamentos.via.createVia');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $Via= new Via_administracion();
+        $Via->Via=$request->post('Via');
+        $Via->save();
+
+        return \redirect()->route("via.index")->with("success","Via agregada con exito!");
+ 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Via_administracion  $via_administracion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Via_administracion $via_administracion)
+    
+    public function show($id)
     {
-        //
+        $datos = Via_administracion::find($id);
+        return view('Medicamentos.via.deleteVia',compact('datos'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Via_administracion  $via_administracion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Via_administracion $via_administracion)
+    
+    public function edit($id)
     {
-        //
+        $datos = Via_administracion::find($id);
+        return view('Medicamentos.via.editVia',compact('datos'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Via_administracion  $via_administracion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Via_administracion $via_administracion)
+   
+    public function update(Request $request, $id)
     {
-        //
+        $via=Via_administracion::find($id);
+        $via->Via=$request->post('Via');
+        
+        $via->save();
+
+        return \redirect()->route("via.index")->with("success","Via actualizada con exito!");
+   
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Via_administracion  $via_administracion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Via_administracion $via_administracion)
+   
+    public function destroy($id)
     {
-        //
+        $via = Via_administracion::find($id);
+        $via->delete();
+        return \redirect()->route("via.index")->with("success","Via Eliminada con exito!");
+   
     }
 }
