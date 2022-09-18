@@ -7,79 +7,62 @@ use Illuminate\Http\Request;
 
 class PresentacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        //
+        $datos = Presentacion::all();
+        return view('Medicamentos.presentacion.indexPresentacion',compact('datos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        return view('Medicamentos.presentacion.createPresentacion');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $presentacions= new Presentacion();
+        $presentacions->Presentacion=$request->post('Presentacion');
+        $presentacions->save();
+
+        return \redirect()->route("presentacion.index")->with("success","Presentacion agregada con exito!");
+ 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Presentacion  $presentacion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Presentacion $presentacion)
+    
+    public function show($id)
     {
-        //
+        $datos = Presentacion::find($id);
+        return view('Medicamentos.presentacion.deletePresentacion',compact('datos'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Presentacion  $presentacion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Presentacion $presentacion)
+    
+    public function edit($id)
     {
-        //
+        $datos = Presentacion::find($id);
+        return view('Medicamentos.presentacion.editPresentacion',compact('datos'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Presentacion  $presentacion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Presentacion $presentacion)
+    
+    public function update(Request $request, $id)
     {
-        //
+        $presentacions=Presentacion::find($id);
+        $presentacions->Presentacion=$request->post('Presentacion');
+        
+        $presentacions->save();
+
+        return \redirect()->route("presentacion.index")->with("success","Presentacion actualizada con exito!");
+   
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Presentacion  $presentacion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Presentacion $presentacion)
+   
+    public function destroy($id)
     {
-        //
+        $presentacions = Presentacion::find($id);
+        $presentacions->delete();
+        return \redirect()->route("presentacion.index")->with("success","Presentacion Eliminada con exito!");
+   
     }
 }
