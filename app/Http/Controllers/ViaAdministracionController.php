@@ -10,7 +10,7 @@ class ViaAdministracionController extends Controller
     
     public function index()
     {
-        $datos = Via_administracion::all();
+        $datos = Via_administracion::paginate(3);
         return view('Medicamentos.via.indexvia',compact('datos'));
     }
 

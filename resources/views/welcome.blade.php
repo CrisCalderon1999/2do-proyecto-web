@@ -11,7 +11,8 @@
 </head>
 <body>
 
-    <a href="{{route('vistaad')}}" class="btn btn-primary"><span class="fas fa-user-plus"></span>Agregar</a>
+    <a href="{{route('vistaad')}}" class="btn btn-primary">Administrador</a>
+    <a href="{{route('vistacli')}}" class="btn btn-primary">Cliente</a>
    
 </body>
 </html>

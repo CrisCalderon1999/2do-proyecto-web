@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medicamento extends Model
 {
     use HasFactory;
+    protected $fillable =['Nombre','Precio_venta','Precio_compra','Existencia_min','Existencia_max','id_Laboratorio','id_Presentacion','id_Via_administracion','Imagen'];
     public function laboratorio(){
         return $this -> belongsTo('App\Models\Laboratorio');
     }

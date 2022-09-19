@@ -6,51 +6,58 @@
 
 
     <div class="py-12">
+        
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+           
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             
-            <form action="{{ route('medicamentos.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('medicamentos.update',$datos->id) }}" method="POST" enctype="multipart/form-data">
+            <h1>Ingreso de medicamentos</h1>
             @csrf
+            @method('PUT')
             <div class="grid grid-cols-1 md:grid-cols-1 gap-5 md:gap-8 mt-5 mx-7">
                     <div class="grid grid-cols-1">
                         <label >Nombre:</label>
-                        <input name="Nombre" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
+                        <input name="Nombre" value="{{$datos->Nombre}}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
                     </div>
                    
                 </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
                     <div class="grid grid-cols-1">
                         <label >Precio de venta:</label>
-                        <input name="Precio_venta" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
+                        <input name="Precio_venta" value="{{$datos->Precio_venta}}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
                     </div>
                     <div class="grid grid-cols-1">
                         <label >Precio de compra:</label>
-                        <input name="Precio_compra" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
+                        <input name="Precio_compra" value="{{$datos->Precio_compra}}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
                     <div class="grid grid-cols-1">
                         <label >Existencia minima:</label>
-                        <input name="Existencia_min" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
+                        <input name="Existencia_min" value="{{$datos->Existencia_min}}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
                     </div>
                     <div class="grid grid-cols-1">
                         <label >Existencia maxima:</label>
-                        <input name="Existencia_max" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
+                        <input name="Existencia_max" value="{{$datos->Existencia_max}}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" required/>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 mx-7">
                     <div class="grid grid-cols-1">
                         <label >Laboratorio:</label>
                         <select name="id_Laboratorio" id="" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"">
-                           @foreach($labs as $lab)
+                        <option value="{{$datos->laboratorios->id}}">{{$datos->laboratorios->Laboratorio}}</option>   
+                        @foreach($labs as $lab)
                            <option value="{{$lab['id']}}">{{$lab->Laboratorio}}</option>
                             @endforeach
+                           
                             </select>
                           </div>
                     <div class="grid grid-cols-1">
                         <label >Presentacion:</label>
                         <select name="id_Presentacion" id="" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
-                          @foreach($pres as $pre)
+                        <option value="{{$datos->presentacions->id}}">{{$datos->presentacions->Presentacion}}</option> 
+                        @foreach($pres as $pre)
                           <option value="{{$pre['id']}}">{{$pre->Presentacion}}</option>
                            @endforeach
                              </select>
@@ -58,7 +65,8 @@
                     <div class="grid grid-cols-1">
                         <label >Via de administracion:</label>
                         <select name="id_Via_administracion" id="" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
-                          @foreach($vias as $via)
+                        <option value="{{$datos->via_administracions->id}}">{{$datos->via_administracions->Via}}</option>
+                        @foreach($vias as $via)
                           <option value="{{$via['id']}}">{{$via->Via}}</option>
                           @endforeach
                           </select>
@@ -68,8 +76,8 @@
 
                 <!-- Para ver la imagen seleccionada, de lo contrario no se -->
                 <div class="grid grid-cols-1 mt-5 mx-7">
-                    <img id="imagenSeleccionada" style="max-height: 300px;">           
-                </div>
+                    <img src="/imagen/{{ $datos->Imagen }}" width="300px" id="imagenSeleccionada" >
+                </div>      
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-1">Subir Imagen</label>
@@ -88,7 +96,7 @@
                     <a href="{{ route('medicamentos.index') }}" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancelar</a>
                     <button type="submit" class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
                 </div>
-            </form> 
+        </form> 
 
             </div>
         </div>

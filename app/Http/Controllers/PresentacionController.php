@@ -10,7 +10,7 @@ class PresentacionController extends Controller
    
     public function index()
     {
-        $datos = Presentacion::all();
+        $datos = Presentacion::paginate(3);
         return view('Medicamentos.presentacion.indexPresentacion',compact('datos'));
     }
 

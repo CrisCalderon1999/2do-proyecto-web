@@ -38,12 +38,6 @@
             Agregar
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{{route ('laboratorio.index')}}">Agregar laboratorio</a></li>
-            <li><a class="dropdown-item" href="{{route ('presentacion.index')}}">Agregar Presentacion</a></li>
-            <li><a class="dropdown-item" href="{{route ('via.index')}}">Agregar Via de administracion</a></li>
-
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="">Agregar empleado</a></li>
           </ul>
         </li>
         
