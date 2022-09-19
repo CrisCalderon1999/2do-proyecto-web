@@ -5,6 +5,7 @@ use App\Http\Controllers\LaboratorioController;
 use App\Http\Controllers\PresentacionController;
 use App\Http\Controllers\ViaAdministracionController;
 use App\Http\Controllers\MedicamentoController;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,6 @@ Route::get('editMedicamentos{id}', [MedicamentoController::class, 'edit'])->name
 Route::put('editMedicamentos{id}', [MedicamentoController::class, 'update'])->name('medicamentos.update');
 Route::get('deleteMedicamentos{id}', [MedicamentoController::class, 'show'])->name('medicamentos.show');
 Route::delete('deleteMedicamentos{id}', [MedicamentoController::class, 'destroy'])->name('medicamentos.delete');
+
+Route::get('indexCliente', [ClienteController::class, 'index'])->name('cliente.index');
+Route::get('detallesCliente{id}', [ClienteController::class, 'show'])->name('cliente.detalles');
