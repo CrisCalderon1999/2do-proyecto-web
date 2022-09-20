@@ -31,7 +31,7 @@
           <a class="nav-link" href="{{route ('medicamentos.index')}}">Medicamentos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Miscelaneos</a>
+          <a class="nav-link" href="{{route ('miscelanea.index')}}">Miscelaneos</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
