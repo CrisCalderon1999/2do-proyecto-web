@@ -40,48 +40,66 @@ class MiscelaneaController extends Controller
          return redirect()->route('miscelanea.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Miscelanea  $miscelanea
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show(Miscelanea $miscelanea)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Miscelanea  $miscelanea
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Miscelanea $miscelanea)
+   
+    public function edit( $id)
     {
-        //
+        $datos = Miscelanea::find($id);
+        return view('Miscelanea.editMiscelanea', compact('datos'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Miscelanea  $miscelanea
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Miscelanea $miscelanea)
+    
+    public function update(Request $request,  $id)
     {
-        //
+        $bandera=0;
+        $miscelaneas=Miscelanea::find($id);
+        $miscelaneas->articulo=$request->post('Articulo');
+        $miscelaneas->Precio_v=$request->post('Precio_v');
+        $miscelaneas->Precio_c=$request->post('Precio_c');
+        $miscelaneas->Existencia_m=$request->post('Existencia_m');
+        $miscelaneas->Existencia_mx=$request->post('Existencia_mx');
+        $miscelaneas->Categoria=$request->post('Categoria');
+        $miscelaneas->Fabricante=$request->post('Fabricante');
+        $miscelaneas->Existencia_a=$request->post('Existencia_a');
+
+        $request->validate([
+            'Articulo' , 'Precio_v' , 'Precio_c' , 'Existencia_m' ,'Existencia_mx' ,'Categoria' ,'Fabricante' ,'Existencia_a'
+        ]);
+        $prod = $request->all();
+        if($imagen = $request->file('imagen')){
+            $rutaGuardarImg = 'imagen/';
+            $imagenProducto = date('YmdHis') . "." . $imagen->getClientOriginalExtension(); 
+            $imagen->move($rutaGuardarImg, $imagenProducto);
+            $prod['imagen'] = "$imagenProducto";
+            $bandera=1;
+         }else{
+            unset($prod['imagen']);
+         }
+         if($bandera==1)
+         {
+            $miscelaneas->Imagen=$prod['imagen'];
+         }
+         else{
+            $miscelaneas->Imagen=$miscelaneas->Imagen;
+         }
+         
+        
+        $miscelaneas->save();
+        return \redirect()->route("miscelanea.index")->with("success","Articulo Editado con exito!");
+   
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Miscelanea  $miscelanea
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Miscelanea $miscelanea)
+    
+    public function destroy($id)
     {
-        //
+        $miscelanea = Miscelanea::find($id);
+        $miscelanea->delete();
+        return \redirect()->route("miscelanea.index")->with("success","Articulo Eliminado con exito!");
+   
     }
 }

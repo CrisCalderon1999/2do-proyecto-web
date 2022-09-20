@@ -6,7 +6,9 @@ use App\Http\Controllers\PresentacionController;
 use App\Http\Controllers\ViaAdministracionController;
 use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ClientemisController;
 use App\Http\Controllers\MiscelaneaController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +65,8 @@ Route::delete('deleteMedicamentos{id}', [MedicamentoController::class, 'destroy'
 
 Route::get('indexCliente', [ClienteController::class, 'index'])->name('cliente.index');
 Route::get('detallesCliente{id}', [ClienteController::class, 'show'])->name('cliente.detalles');
+Route::get('indexClienteMiscelanea', [ClientemisController::class, 'index'])->name('clientemis.index');
+Route::get('detallesClienteMiscelanea{id}', [ClientemisController::class, 'show'])->name('clientemis.show');
 
 
 //Rutas de Medicamentos
@@ -73,3 +77,7 @@ Route::get('editMiscelanea{id}', [MiscelaneaController::class, 'edit'])->name('m
 Route::put('editMiscelanea{id}', [MiscelaneaController::class, 'update'])->name('miscelanea.update');
 Route::get('deleteMiscelanea{id}', [MiscelaneaController::class, 'show'])->name('miscelanea.show');
 Route::delete('deleteMiscelanea{id}', [MiscelaneaController::class, 'destroy'])->name('miscelanea.delete');
+
+
+//login
+Route::post('login', [LoginController::class, 'store'])->name('login.store');

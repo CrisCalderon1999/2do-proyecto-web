@@ -56,14 +56,14 @@
                         </td>   
                  
                       <td>
-                        <form action="{{route('medicamentos.edit',$item->id)}}" method="GET">
+                        <form action="{{route('miscelanea.edit',$item->id)}}" method="GET">
                           <button class="rounded bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4">
                           <i class="fas fa-user-edit"></i>
                           </button>
                           </form>
                           </td>
                           <td>
-                          <form action="{{ route('medicamentos.delete', $item->id) }}" method="POST" class="formEliminar">
+                          <form action="{{ route('miscelanea.delete', $item->id) }}" method="POST" class="formEliminar">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="rounded bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4"> <i class="fas fa-user-times"></i></button>

@@ -31,7 +31,10 @@
           <a class="nav-link" href="{{route ('cliente.index')}}">Medicamentos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Miscelaneos</a>
+          <a class="nav-link" href="{{route ('clientemis.index')}}">Miscelaneos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route ('inciarsesion')}}">Salir</a>
         </li>
         
         
