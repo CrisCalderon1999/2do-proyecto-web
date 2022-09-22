@@ -9,6 +9,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ClientemisController;
 use App\Http\Controllers\MiscelaneaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\McontroladoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +83,13 @@ Route::delete('deleteMiscelanea{id}', [MiscelaneaController::class, 'destroy'])-
 
 //login
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
+
+
+//Rutas de Medicamentos
+Route::get('indexControlados', [McontroladoController::class, 'index'])->name('controlados.index');
+Route::get('createControlados', [McontroladoController::class, 'create'])->name('controlados.create');
+Route::post('createControlados', [McontroladoController::class, 'store'])->name('controlados.store');
+Route::get('editControlados{id}', [McontroladoController::class, 'edit'])->name('controlados.edit');
+Route::put('editControlados{id}', [McontroladoController::class, 'update'])->name('controlados.update');
+Route::get('deleteControlados{id}', [McontroladoController::class, 'show'])->name('controlados.show');
+Route::delete('deleteControlados{id}', [McontroladoController::class, 'destroy'])->name('controlados.delete');

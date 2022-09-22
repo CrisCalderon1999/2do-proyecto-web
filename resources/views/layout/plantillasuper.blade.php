@@ -28,7 +28,7 @@
           <a class="nav-link active" aria-current="page" href="">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Medicamentos Controlados</a>
+          <a class="nav-link" href="{{route('controlados.index')}}">Medicamentos Controlados</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{route ('inciarsesion')}}">Salir</a>
