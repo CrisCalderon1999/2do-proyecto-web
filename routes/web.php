@@ -25,6 +25,7 @@ Route::get('/', function () {return view('welcome');})->name('inciarsesion');
 
 Route::get('vistaAdministrador', function () {return view('vistaAdministrador');})->name('vistaad');
 Route::get('vistaCliente', function () {return view('vistaCliente');})->name('vistacli');
+Route::get('vistasuper', function () {return view('vistasuper');})->name('vistasuper');
 
 //Rutas de laboratorio
 

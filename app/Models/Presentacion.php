@@ -11,4 +11,7 @@ class Presentacion extends Model
     public function medicamentos(){
         return $this->hasMany('App\Models\Medicamento');
     }
+    public function medicamentosres(){
+        return $this->hasMany('App\Models\Mcontrolado');
+    }
 }

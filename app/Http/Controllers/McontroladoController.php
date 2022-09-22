@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\login;
+use App\Models\Mcontrolado;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class McontroladoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,23 +35,16 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario=$request->post('correo');
-        $claves=$request->post('clave');
-        if($usuario=="administrador" && $claves=="pepian")
-            return view('vistaAdministrador');
-        if($usuario=="cliente" && $claves=="pizza")
-            return view('vistaCliente');
-        if($usuario=="superadmin" && $claves=="Farmacos")
-            return view('vistasuper');
-        else{
-            return view('vistalogin');
-        }
-        
-       
+        //
     }
 
-    
-    public function show(login $login)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Mcontrolado  $mcontrolado
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Mcontrolado $mcontrolado)
     {
         //
     }
@@ -59,10 +52,10 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\login  $login
+     * @param  \App\Models\Mcontrolado  $mcontrolado
      * @return \Illuminate\Http\Response
      */
-    public function edit(login $login)
+    public function edit(Mcontrolado $mcontrolado)
     {
         //
     }
@@ -71,10 +64,10 @@ class LoginController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\login  $login
+     * @param  \App\Models\Mcontrolado  $mcontrolado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, login $login)
+    public function update(Request $request, Mcontrolado $mcontrolado)
     {
         //
     }
@@ -82,10 +75,10 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\login  $login
+     * @param  \App\Models\Mcontrolado  $mcontrolado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(login $login)
+    public function destroy(Mcontrolado $mcontrolado)
     {
         //
     }
